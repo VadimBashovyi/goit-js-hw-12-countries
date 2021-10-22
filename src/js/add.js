@@ -1,15 +1,11 @@
 import debounce from 'lodash.debounce';
 import fetchCountries from './fetchCountries.js';
-import countryCardTpl from '../templates/country-card.hbs';
-import countryListTpl from '../templates/country-list.hbs';
+import CardCountryEl from '../templates/coun-card.hbs';
+import CardCountryListEL from '../templates/list-coun.hbs';
 import refs from './refs.js';
-const { cardInfo, searchForm } = refs;
+const { cardCouformSeachCountryRef } = refs;
 import '@pnotify/core/dist/BrightTheme.css';
 const { error } = require('@pnotify/core');
-
-refs.searchForm.addEventListener('input', debounce(onSearch, 1000));
-
-/* -----------------------------функция инпута приносит данные ---------------------------- */
 
 function onSearch(e) {
   e.preventDefault();
@@ -26,9 +22,9 @@ function onSearch(e) {
           text: 'No countryhas been found.',
         });
       } else if (data.length === 1) {
-        renderCountriCard(data);
+        CreateRenderCountriCard(data);
       } else if (data.length <= 10) {
-        renderCountryList(data);
+        CreateRenderCountryList(data);
       }
     })
     .catch(error => {
@@ -38,18 +34,17 @@ function onSearch(e) {
     });
 }
 
-/* ---------------------------- рендерит разметку --------------------------- */
-function renderCountriCard(data) {
-  const cardMarkup = countryCardTpl(data);
-  refs.cardInfo.innerHTML = cardMarkup;
+function CreateRenderCountriCard(data) {
+  const cardMarkup = CardCountryEl(data);
+  refs.cardCountryRef.innerHTML = cardMarkup;
 }
 
-function renderCountryList(data) {
-  const cardMarkup = countryListTpl(data);
-  refs.cardInfo.innerHTML = cardMarkup;
+function CreateRenderCountryList(data) {
+  const cardMarkup = CardCountryListEL(data);
+  refs.cardCountryRef.innerHTML = cardMarkup;
 }
-/* ---------------------------- очистка инпута --------------------------- */
-// function clearInput() {
-//   refs.searchForm.textContent = '';
-// }
-// ================================================
+function clearInput() {
+  refs.formSeachCountryRef.textContent = '';
+}
+
+refs.formSeachCountryRef.addEventListener('input', debounce(onSearch, 1000));
