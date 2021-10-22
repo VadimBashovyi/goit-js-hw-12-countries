@@ -1,0 +1,33 @@
+{
+  "name": "goit-js-hw-12-countries",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "dev": "parcel src/*.html",
+    "build": "parcel build src/*.html --public-url /goit-js-hw-12-countries/",
+    "deploy": "gh-pages -d dist",
+    "predeploy": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bogdan-K-A/goit-js-hw-12-countries.git"
+  },
+  "author": "Kozhoma Bogdan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Bogdan-K-A/goit-js-hw-12-countries/issues"
+  },
+  "homepage": "https://Bogdan-K-A.github.io/goit-js-hw-12-countries",
+  "dependencies": {
+    "axios": "^0.23.0",
+    "gh-pages": "^3.2.3",
+    "lodash.debounce": "^4.0.8",
+    "parcel-bundler": "^1.12.5",
+    "parcel-plugin-handlebars-precompile": "^1.0.2",
+    "parcel-plugin-nuke-dist": "^1.0.1"
+  },
+  "devDependencies": {
+    "@pnotify/core": "^5.2.0"
+  }
+}
